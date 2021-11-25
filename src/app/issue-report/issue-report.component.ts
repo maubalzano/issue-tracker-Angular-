@@ -1,7 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IssuesService } from '../issues.service';
 import { Issue } from '../issue';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-issue-report',
@@ -12,7 +12,6 @@ export class IssueReportComponent implements OnInit {
   @Output() formClose = new EventEmitter();
   issueForm: FormGroup | undefined;
   suggestions: Issue[] = [];
-
   constructor(
     private builder: FormBuilder,
     private issueService: IssuesService

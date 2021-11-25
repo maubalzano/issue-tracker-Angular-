@@ -10,22 +10,27 @@ export class IssuesService {
 
   constructor() { }
 
-  getPendingIssues(){
+  getPendingIssues() {
     return this.issues.filter(issue => !issue.completed)
   }
 
-  createIssue(issue: Issue){
+  createIssue(issue: Issue) {
     issue.issueNo = this.issues.length + 1;
     this.issues.push(issue)
   }
 
-  completeIssue(issue: Issue){
+  completeIssue(issue: Issue) {
     const selectedIssue: Issue = {
       ...issue,
       completed: new Date()
     };
     const index = this.issues.findIndex(i => i === issue);
     this.issues[index] = selectedIssue
+  }
+
+  replaceIssue(issue: Issue) {
+    const index = this.issues.findIndex(i => i.issueNo === issue.issueNo);
+    this.issues[index] = issue;
   }
 
   getSuggestions(title: string): Issue []{
