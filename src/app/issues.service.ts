@@ -27,4 +27,11 @@ export class IssuesService {
     const index = this.issues.findIndex(i => i === issue);
     this.issues[index] = selectedIssue
   }
+
+  getSuggestions(title: string): Issue []{
+    if (title.length > 3) {
+      return this.issues.filter( issue => issue.title.toLowerCase().indexOf(title.toLowerCase()) !== -1);
+    };
+    return []
+  }
 }
